@@ -41,4 +41,4 @@
 ```
 ***
 github链接
-[链接名称](敬请期待)
+[链接名称](https://github.com/tanagang/vue-remove-simple)
