@@ -1,0 +1,15 @@
+{
+  "name": "vue-remove-simple",
+  "version": "1.0.5",
+  "description": "左滑删除 长按操作",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "leftremove",
+    "longpress"
+  ],
+  "author": "tanzheng",
+  "license": "ISC"
+}
