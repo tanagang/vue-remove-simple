@@ -17,26 +17,26 @@ Vue.use(Remove,{......})
     </remove>
 </template>
 <script>
-    export default {
-            data() {
-            return {
-                obj:{
-                    id:1
-                }
+export default {
+    data() {
+        return {
+            obj:{
+                id:1
             }
+        }
+    },
+    methods:{
+        remove(obj){
+            alert('您点击了删除')
         },
-        methods:{
-            remove(num){
-                alert('您点击了删除')
-            },
-            next(){
-                alert('您点击了第二按钮')
-            },
-            longpress(num){
-                alert("长按")
-            }
+        next(obj){
+            alert('您点击了第二按钮')
         },
+        longpress(obj){
+            alert("长按")
+        }
     }
+}
 </script>
 ```
 ***
