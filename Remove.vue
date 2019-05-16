@@ -8,7 +8,6 @@
         <div class="slider-flex" @click.stop="nextEvent" v-if="btnTwo" :style="{background:backgroundTwo,color:colorTwo}">{{this.btnTwo}}</div>
         <div class="slider-flex" @click.stop="remove" :style="{background:background,color:color}">{{this.btn}}</div>
       </div>
-      
     </div>
   </div>
 </template>
@@ -201,10 +200,10 @@ export default {
       }
     },
     nextEvent() {
-      this.$emit("nextEvent", this.params);
+      this.$emit("nextEvent");
     },
     remove() {
-      this.$emit("callback", this.params);
+      this.$emit("callback");
     }
   }
 };
@@ -223,7 +222,7 @@ export default {
   width: 100%;
   z-index: 100;
   overflow: hidden;
-  transition: all 0.2s ease-out;
+  transition: all 0.2s linear;
 }
 
 .btn-remove {
@@ -232,7 +231,7 @@ export default {
   height: 100%;
   text-align: center;
   font-size: 16px;
-  transition: all 0.2s ease-out;
+  transition: all 0.2s linear;
 }
 .btn-remove > div {
   width: 100%;

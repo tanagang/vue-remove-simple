@@ -9,10 +9,15 @@ Vue.use(Remove)
 Vue.use(Remove,{......})
 
 <template>
-    <!--params可以是任意值，都会作为@longpress和@callback的回调参数，@nextEvent是第二个按钮的回调函数（如果存在第二个按钮的话）-->
-    <remove :params="obj" @longpress="longpress" @callback="remove" @nextEvent="next">
+    <!@longpress长按事件和@callback删除事件，@nextEvent是第二个按钮的回调函数（如果存在第二个按钮的话）-->
+    <remove @longpress="longpress(num)" @callback="remove(1)" @nextEvent="next">
         <div>
             我是数据1
+        </div>
+    </remove>
+    <remove  @longpress="longpress" @callback="remove(2)" @nextEvent="next">
+        <div>
+            我是数据2
         </div>
     </remove>
 </template>
@@ -20,20 +25,17 @@ Vue.use(Remove,{......})
 export default {
     data() {
         return {
-            obj:{
-                id:1
-            }
         }
     },
     methods:{
-        remove(obj){
-            alert('您点击了删除')
+        remove(num){
+            alert('您点击了删除第'+num+'行')
         },
-        next(obj){
-            alert('您点击了第二按钮')
+        next(num){
+            alert('您点击了第'+num+'个按钮')
         },
-        longpress(obj){
-            alert("长按")
+        longpress(num){
+            alert("长按了"+num)
         }
     }
 }
