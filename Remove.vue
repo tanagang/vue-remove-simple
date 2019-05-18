@@ -44,7 +44,7 @@ export default {
     },
     width: {
       type: [Number, String],
-      default: "70"
+      default: "80"
     },
     params: {
       type: [Number, String, Object],
@@ -89,7 +89,7 @@ export default {
     //动态更改remove按钮的margin
     remove.style.height = computedStyle.height;
     remove.style.marginTop = computedStyle.marginTop;
-    remove.style.marginBottom = computedStyle.marginBottom;
+    remove.style.marginBottom = computedStyle.marginBottom;  
   },
   methods: {
     //返回角度
@@ -129,18 +129,22 @@ export default {
           this.$emit("longpress", this.params);
           return;
         }, 700);
-
-        //先初始化其它兄弟元素位置
-        var slider = document.querySelectorAll(".slider-remove");
-        for (var i = 0; i < slider.length; i++) {
-          if (slider[i] != this.$refs.slider) {
-            slider[i].children[0].style.transform = "translateX(0)";
-            slider[i].children[1].style.transform = "translateX(0)";
-          }
-        }
         // 记录开始位置
         this.startX = ev.targetTouches[0].clientX;
         this.startY = ev.targetTouches[0].clientY;
+
+        this.backInitX()
+      }
+    },
+    //先收缩所有回归初始状态后，再滑出当前按钮
+    backInitX(){
+      let slider = document.querySelectorAll(".slider-remove");
+  
+      for (var i = 0; i < slider.length; i++) {
+        if (slider[i] != this.$refs.slider) {
+          slider[i].children[0].style.transform = "translateX(0)";
+          slider[i].children[1].style.transform = "translateX(0)";
+        }
       }
     },
     touchMove(ev) {
@@ -171,10 +175,10 @@ export default {
           this.swipeStyle = `transform:translateX(0px);`;
           // 大于0，表示左滑了，此时滑块开始滑动
         } else if (this.disX > 0) {
-          //具体滑动距离我取的是 手指偏移距离*3。
-          this.swipeStyle = `transform:translateX(-${this.disX * 2}px);`;
+          //具体滑动距离我取的是 手指偏移距离*2。
+          this.swipeStyle = `transform:translateX(-${this.disX}px);`;
           // 最大也只能等于删除按钮宽度
-          if (this.disX * 2 >= this.wd) {
+          if (this.disX >= this.wd) {
             this.swipeStyle = `transform:translateX(-${this.wd}px);`;
           }
         }
@@ -183,15 +187,11 @@ export default {
     touchEnd(ev) {
       ev = ev || event;
       clearTimeout(this.timeOutEvent);
-      if (this.direction !== "swipeleft" && this.direction !== "swiperight") {
-        return;
-      }
       if (ev.changedTouches.length == 1) {
         let endX = ev.changedTouches[0].clientX;
         this.disX = this.startX - endX;
         //如果距离小于删除按钮一半,强行回到起点
-
-        if (this.disX * 2 < this.wd / 2) {
+        if (this.disX < this.wd / 2) {
           this.swipeStyle = `transform:translateX(0);`;
         } else {
           //大于一半 滑动到最大值
@@ -222,7 +222,7 @@ export default {
   width: 100%;
   z-index: 100;
   overflow: hidden;
-  transition: all 0.2s linear;
+  transition: all 0.2s ease-out;
 }
 
 .btn-remove {
@@ -231,7 +231,7 @@ export default {
   height: 100%;
   text-align: center;
   font-size: 16px;
-  transition: all 0.2s linear;
+  transition: all 0.2s ease-out;
 }
 .btn-remove > div {
   width: 100%;
