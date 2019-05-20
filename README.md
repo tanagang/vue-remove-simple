@@ -1,4 +1,5 @@
 基于vue开箱即用的全局左滑删除（包含长按事件）的回调
+![](https://file.40017.cn/tcyp/tz/remove.gif)
 ### 使用方法
 ```javascript
 首先在项目中安装：npm install vue-remove-simple -S
