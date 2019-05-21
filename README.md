@@ -12,33 +12,34 @@ Vue.use(Remove)
 
 <template>
     <!@longpress长按事件和@callback删除事件，@nextEvent是第二个按钮的回调函数（如果存在第二个按钮的话）-->
-    <remove @longpress="longpress(num)" @callback="remove(1)" @nextEvent="next">
-        <div>
-            我是数据1
+    <remove @longpress="longpress(0)" @callback="callback(0)">
+        <div style="height:50px;line-height:50px;border-bottom:1px solid #ccc">
+            数据1
         </div>
     </remove>
-    <remove  @longpress="longpress" @callback="remove(2)" @nextEvent="next">
-        <div>
-            我是数据2
+    <remove @longpress="longpress(1)" :nextBtn="'标记'"  @callback="callback(1)" @nextCallback="nextCallback(obj)">
+        <div style="height:50px;line-height:50px;border-bottom:1px solid #ccc">
+            数据2
         </div>
     </remove>
 </template>
 <script>
 export default {
     data() {
-        return {
-        }
-    },
+		return {
+			obj:{name:'张三'}
+		};
+	},
     methods:{
-        remove(num){
-            alert('您点击了删除第'+num+'行')
-        },
-        next(num){
-            alert('您点击了第'+num+'个按钮')
-        },
         longpress(num){
-            alert("长按了"+num)
-        }
+			alert("你长按了"+num)
+		},
+		callback(num){
+			alert("你点击了删除"+num)
+		},
+		nextCallback(obj){
+			alert("hello:"+obj.name)
+		}
     }
 }
 </script>
