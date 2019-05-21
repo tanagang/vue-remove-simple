@@ -5,7 +5,7 @@
         <slot></slot>
       </div>
       <div class="btn-remove slider-flex" :style="defaultClass+swipeStyle" ref="remove">
-        <div class="slider-flex" @click.stop="nextEvent" v-if="btnTwo" :style="{background:backgroundTwo,color:colorTwo}">{{this.btnTwo}}</div>
+        <div class="slider-flex" @click.stop="nextEvent" v-if="nextBtn" :style="{background:nextBackground,color:nextColor}">{{this.nextBtn}}</div>
         <div class="slider-flex" @click.stop="remove" :style="{background:background,color:color}">{{this.btn}}</div>
       </div>
     </div>
@@ -18,7 +18,7 @@ export default {
       type: [Number, String],
       default: "red"
     },
-    backgroundTwo: {
+    nextBackground: {
       type: [Number, String],
       default: "#ccc"
     },
@@ -26,7 +26,7 @@ export default {
       type: [Number, String],
       default: "#fff"
     },
-    colorTwo: {
+    nextColor: {
       type: [Number, String],
       default: "#fff"
     },
@@ -34,7 +34,7 @@ export default {
       type: [Number, String],
       default: "删除"
     },
-    btnTwo: {
+    nextBtn: {
       type: [Number, String],
       default: ""
     },
@@ -45,10 +45,6 @@ export default {
     width: {
       type: [Number, String],
       default: "80"
-    },
-    params: {
-      type: [Number, String, Object],
-      default: ""
     }
   },
   data() {
@@ -65,7 +61,7 @@ export default {
   },
   computed: {
     defaultClass() {
-      if (this.btnTwo) {
+      if (this.nextBtn) {
         return `font-size:${this.fontSize};width:${this.width *
           2}px;right:-${this.width * 2}px;`;
       } else {
@@ -126,7 +122,7 @@ export default {
       if (ev.touches.length == 1) {
         this.timeOutEvent = setTimeout(() => {
           //此处为长按事件
-          this.$emit("longpress", this.params);
+          this.$emit("longpress");
           return;
         }, 700);
         // 记录开始位置
@@ -200,7 +196,7 @@ export default {
       }
     },
     nextEvent() {
-      this.$emit("nextEvent");
+      this.$emit("nextCallback");
     },
     remove() {
       this.$emit("callback");
