@@ -5,7 +5,7 @@
         <slot></slot>
       </div>
       <div class="btn-remove slider-flex" :style="defaultClass+swipeStyle" ref="remove">
-        <div class="slider-flex" @click.stop="nextEvent" v-if="nextBtn" :style="{background:nextBackground,color:nextColor}">{{this.nextBtn}}</div>
+        <div class="slider-flex" @click.stop="nextCallback" v-if="nextBtn" :style="{background:nextBackground,color:nextColor}">{{this.nextBtn}}</div>
         <div class="slider-flex" @click.stop="remove" :style="{background:background,color:color}">{{this.btn}}</div>
       </div>
     </div>
@@ -195,7 +195,7 @@ export default {
         }
       }
     },
-    nextEvent() {
+    nextCallback() {
       this.$emit("nextCallback");
     },
     remove() {

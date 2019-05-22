@@ -1,5 +1,8 @@
 基于vue开箱即用的全局左滑删除（包含长按事件）的回调  
-下图gif可能有卡顿，[图片原地址](https://file.40017.cn/tcyp/tz/remove.gif) 路过能star一下就更好了    
+下图gif可能有卡顿，[图片原地址](https://file.40017.cn/tcyp/tz/remove.gif)  
+```diff
++路过来个star鼓励下
+```    
 
 ![](https://file.40017.cn/tcyp/tz/remove.gif)
 
