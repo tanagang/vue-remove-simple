@@ -14,14 +14,13 @@ import Remove from 'vue-remove-simple'
 Vue.use(Remove)
 
 <template>
-    <!@longpress长按事件和@callback删除事件，@nextEvent是第二个按钮的回调函数（如果存在第二个按钮的话）-->
     <remove @longpress="longpress(0)" @callback="callback(0)">
-        <div style="height:50px;line-height:50px;border-bottom:1px solid #ccc">
+        <div>
             数据1
         </div>
     </remove>
     <remove @longpress="longpress(1)" :nextBtn="'标记'"  @callback="callback(1)" @nextCallback="nextCallback(obj)">
-        <div style="height:50px;line-height:50px;border-bottom:1px solid #ccc">
+        <div>
             数据2
         </div>
     </remove>
