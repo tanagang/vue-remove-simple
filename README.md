@@ -2,7 +2,7 @@
 下图gif可能有卡顿，[图片原地址](https://file.40017.cn/tcyp/tz/remove.gif)  
 ```diff
 +路过来个star鼓励下
-```    
+```
 
 ![](https://file.40017.cn/tcyp/tz/remove.gif)
 
@@ -14,7 +14,6 @@ import Remove from 'vue-remove-simple'
 Vue.use(Remove)
 
 <template>
-    <!@longpress长按事件和@callback删除事件，@nextEvent是第二个按钮的回调函数（如果存在第二个按钮的话）-->
     <remove @longpress="longpress(0)" @callback="callback(0)">
         <div style="height:50px;line-height:50px;border-bottom:1px solid #ccc">
             数据1
