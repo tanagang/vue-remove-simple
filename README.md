@@ -15,12 +15,12 @@ Vue.use(Remove)
 
 <template>
     <remove @longpress="longpress(0)" @callback="callback(0)">
-        <div>
+        <div style="height:50px;line-height:50px;border-bottom:1px solid #ccc">
             数据1
         </div>
     </remove>
     <remove @longpress="longpress(1)" :nextBtn="'标记'"  @callback="callback(1)" @nextCallback="nextCallback(obj)">
-        <div>
+        <div style="height:50px;line-height:50px;border-bottom:1px solid #ccc">
             数据2
         </div>
     </remove>
