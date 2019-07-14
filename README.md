@@ -12,6 +12,8 @@
 //main.js
 import Remove from 'vue-remove-simple'
 Vue.use(Remove)
+//可以通过动态传参统一配置
+vue.use(Remove,{background:'#f60',btn:'标记'})
 
 <template>
     <remove @longpress="longpress(0)" @callback="callback(0)">
